@@ -14,7 +14,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "ssh://git@78.47.103.186/~/gulp-usebem"
+    "url": "git://github.com/sergey-trotsyuk/gulp-usebem.git"
   },
   "keywords": [
     "gulpplugin",
@@ -28,5 +28,5 @@
     "name": "Sergey Trotsyuk",
     "email": "sergey.trotsyuk@gmail.com"
   },
-  "license": "proprietary"
+  "license": "MIT"
 }
