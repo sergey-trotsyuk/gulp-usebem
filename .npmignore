@@ -1,0 +1,8 @@
+.editorconfig
+.travis.yml
+.jshintrc
+.gitignore
+.gitattributes
+CONTRIBUTING.md
+gulpfile.js
+test

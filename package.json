@@ -1,0 +1,32 @@
+{
+  "name": "gulp-usebem",
+  "version": "0.1.0",
+  "description": "Parse BEM blocks in HTML files.",
+  "main": "index.js",
+  "dependencies": {
+    "gulp-concat": "^2.5.2",
+    "gulp-if": "^1.2.5",
+    "gulp-util": "^3.0.4",
+    "through2": "^0.6.3",
+    "vinyl-fs": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@78.47.103.186/~/gulp-usebem"
+  },
+  "keywords": [
+    "gulpplugin",
+    "html",
+    "BEM",
+    "scripts",
+    "css",
+    "optimize"
+  ],
+  "author": {
+    "name": "Sergey Trotsyuk",
+    "email": "sergey.trotsyuk@gmail.com"
+  },
+  "license": "proprietary"
+}
