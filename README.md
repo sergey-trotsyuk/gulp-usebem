@@ -18,23 +18,44 @@ npm install --save-dev gulp-usebem
 
 The following example will parse the BEM block classes in the HTML and replace special markers to references.
 Founded BEM files will be concatenated and passed through in a stream as well.
+Use [gulp-if](https://github.com/robrich/gulp-if) for optimize or save asstes.
+Use [gulp-ignore](https://github.com/robrich/gulp-ignore) for ignore default asset paths.
 
 ```js
-var gulp = require('gulp'),
-    usebem = require('gulp-usebem');
+var gulp = require('gulp');
+var gulpUsebem = require('gulp-usebem');
+var gulpIf = require('gulp-if');
+var gulpIgnore = require('gulp-ignore');
 
 gulp.task('default', function () {
-  var bemAssets = usebem.assets({
+  var bemAssets = gulpUsebem.assets({
     blockPaths: ['app/blocks'],
     exts: ['css', 'js']
   });
 
   return gulp.src('app/*.html')
-    .pipe($.usebem({
+    .pipe(bemAssets)
+    // Add assets to pipe
+    // Save css files
+    .pipe(gulpIf(
+      '*.css',
+      gulp.dest('dist/styles/bem')
+    ))
+    // Save js files
+    .pipe(gulpIf(
+      '*.js',
+      gulp.dest('dist/scripts/bem')
+    ))
+    // Exclude assets with default paths
+    .pipe(gulpIgnore.exclude('**/*'))
+    // Restore app/*.html
+    .pipe(bemAssets.restore())
+    // Replace markers in HTML
+    .pipe(gulpUsebem({
       cssCommentMarker: 'bem-css',
       cssBlockPath: 'styles/bem',
-      jsCommentMarker: 'bem-js'
-      jsBlockPath: 'scripts/bem',
+      jsCommentMarker: 'bem-js',
+      jsBlockPath: 'scripts/bem'
     }))
     .pipe(gulp.dest('dist'));
 });
